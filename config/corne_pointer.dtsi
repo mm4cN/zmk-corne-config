@@ -1,0 +1,17 @@
+/ {
+  split_inputs {
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    cirque_split: cirque_split@0 {
+      compatible = "zmk,input-split";
+      reg = <0>;
+    };
+  };
+
+  cirque_listener: cirque_listener {
+    compatible = "zmk,input-listener";
+    status = "disabled";
+    device = <&cirque_split>;
+  };
+};

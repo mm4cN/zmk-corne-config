@@ -1,0 +1,23 @@
+#include "corne_pointer.dtsi"
+
+&pro_micro_i2c {
+  status = "okay";
+
+  cirque_trackpad: trackpad@2a {
+    compatible = "cirque,pinnacle-polling";
+    reg = <0x2a>;
+    status = "okay";
+
+    poll-interval-ms = <2>;
+    movement-scale = <2>;
+
+    /* disabled due to breaking the drag mouse functionality */
+    /* primary-tap-enable; */ 
+    swap-xy;
+    invert-x;
+  };
+};
+
+&cirque_split {
+  device = <&cirque_trackpad>;
+};
