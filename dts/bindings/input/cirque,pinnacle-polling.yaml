@@ -1,0 +1,23 @@
+# Copyright (c) 2026
+# SPDX-License-Identifier: MIT
+
+description: Cirque Pinnacle trackpad polled over I2C without a data-ready pin
+
+compatible: "cirque,pinnacle-polling"
+
+include:
+  - name: i2c-device.yaml
+  - name: cirque,pinnacle-common.yaml
+    property-blocklist:
+      - data-ready-gpios
+
+properties:
+  poll-interval-ms:
+    type: int
+    default: 4
+    description: Interval between Status1 register checks in milliseconds.
+
+  movement-scale:
+    type: int
+    default: 1
+    description: Multiplier applied to relative X/Y movement.

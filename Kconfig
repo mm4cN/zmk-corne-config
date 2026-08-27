@@ -1,0 +1,10 @@
+menuconfig INPUT_PINNACLE_POLLING
+	bool "Cirque Pinnacle trackpad without a data-ready pin"
+	default y
+	depends on I2C
+	depends on INPUT
+	depends on DT_HAS_CIRQUE_PINNACLE_POLLING_ENABLED
+	help
+	  Enable the local polling driver for a Cirque Pinnacle trackpad connected
+	  over I2C without the hardware data-ready signal.
+

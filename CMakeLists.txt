@@ -1,0 +1,12 @@
+zephyr_library()
+zephyr_library_sources_ifdef(
+  CONFIG_INPUT_PINNACLE_POLLING
+  drivers/input/input_pinnacle_polling.c
+)
+zephyr_include_directories(
+  /workspace/zmk/app/include
+)
+zephyr_library_sources_ifdef(
+  CONFIG_ZMK_DISPLAY_STATUS_SCREEN_CUSTOM
+  src/display/my_status_screen.c
+)

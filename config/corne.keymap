@@ -6,16 +6,13 @@
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&led_strip {
-  chain-length = <27>;
-};
-
-&oled {
-    status_screen {
-        compatible = "zmk,display-status-screen";
+&spi3 {
+    led_strip: ws2812@0 {
+        chain-length = <27>;
     };
 };
 
@@ -24,10 +21,10 @@
       compatible = "zmk,config";
       zmk,settings = "enable";
     };
-
-    chosen {
-      zmk,display-init-on-wake = "on";
-    };
+    /**/
+    /* chosen { */
+    /*   zmk,display-init-on-wake = "on"; */
+    /* }; */
 
     macros {
       to_l1_color: to_l1_color {
@@ -83,7 +80,7 @@
             label = "NUMBERS";
             bindings = <
                 &kp TAB   &kp N1    &kp N2    &kp N3    &kp N4    &kp N5       &kp N6    &kp N7    &kp N8    &kp N9    &kp N0    &kp BSPC
-                &kp LCTRL &none     &none     &none     &none     &none        &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none     &kp PG_UP
+                &kp LCTRL &none     &none     &mkp LCLK &mkp RCLK &none        &kp LEFT  &kp DOWN  &kp UP    &kp RIGHT &none     &kp PG_UP
                 &kp LSHFT &none     &none     &none     &none     &none        &none     &none     &none     &none     &none     &kp PG_DN
                                      &kp LGUI &trans    &kp SPACE               &kp RET   &mo 4  &kp RALT
             >;
